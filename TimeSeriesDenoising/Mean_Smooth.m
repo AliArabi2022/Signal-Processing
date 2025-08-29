@@ -20,12 +20,14 @@ noiseamp = 5;
 ampl = interp1(rand(p,1)*30, linspace(1,p,n));
 noise = noiseamp * randn(size(time));
 signal = ampl + noise;
+
+figure(1)
  subplot(2,1,1);
  plot(time,ampl);
  subplot(2,1,2);
  plot(time,signal);
- pause; % Pauses until a key is pressed
- disp('Key pressed, continuing.');
+ % pause; % Pauses until a key is pressed
+ % disp('Key pressed, continuing.');
 
 % initialize filtered signal vector
 filtsig = zeros(size(signal));
@@ -42,7 +44,7 @@ end
 windowsize = 1000*(k*2+1)/ srate;
 
 % plot the noisy and filtered signals
-figure(1), clf, hold on
+figure(2), clf, hold on
 plot(time, signal, time, filtsig, "linew", 2)
 
 % draw a patch to indicate the window size
