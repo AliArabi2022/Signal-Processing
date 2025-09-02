@@ -8,7 +8,7 @@
 % and s(n-1) and s(n+1) are the previous and next time points. 
 
 % import data
-load emg4TKEO.mat
+load Data\emg4TKEO.mat
 
 % initialize filtered signal
 emgf = emg;

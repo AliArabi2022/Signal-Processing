@@ -13,8 +13,6 @@
 %%
 clc;
 clear all;
-close all;
-
 
 
 % create signal
@@ -41,7 +39,7 @@ noisepnts = noisepnts(1:round(n*propnoise));
 
 
 % generate signal and replace points with noise
-signal(noisepnts) = 50+rand(size(noisepnts))*100;
+signal(noisepnts) = 50 + rand(size(noisepnts))*100;
 % replace the value of signal(noisepnts)
 % with 
 % amplitudes = rand * 100 + 50
@@ -60,6 +58,7 @@ threshold = th;
 
 % find data values above the threshold
 suprathresh = find( signal>threshold );
+% suprathresh = 1:n, % If use median filter for all n point of signal
 
 % initialize filtered signal
 filtsig = signal;
