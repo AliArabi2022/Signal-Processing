@@ -47,7 +47,7 @@ signal(noisepnts) = 50 + rand(size(noisepnts))*100;
 
 % use hist to pick threshold
 figure(1), clf
-histogram(signal,100);
+hist(signal,100);
 zoom on
 
 prompt = "What is the threshold value? ";
