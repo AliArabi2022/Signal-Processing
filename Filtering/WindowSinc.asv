@@ -1,0 +1,49 @@
+srate = 1000;        % نرخ نمونه‌برداری
+time  = -4:1/srate:4; % بازه‌ی زمانی از -4 تا 4 ثانیه
+pnts  = length(time); % تعداد نقاط
+% ساخت فیلتر سینک
+f = 8;
+sincfilt = sin(2*pi*f*time) ./ time;
+% adjust NaN and normalize filter to unit-gain
+sincfilt(~isfinite(sincfilt)) = max(sincfilt);
+% چون در
+% t=0 
+% مقدارش 
+% NaN
+sincfilt = sincfilt./sum(sincfilt);
+%نرمالایزش می‌کنیم
+sincfiltW = sincfilt .* hann(pnts)';
+% جای اینکه سینک بی‌نهایت باشه (از -∞ تا +∞)
+%  اون رو برش می‌زنیم و با یک پنجره هموار مثل
+% Hann 
+% ضرب می‌کنیم
+%  این باعث میشه در حوزه‌ی فرکانس لوب‌های جانبی
+% (side lobes)
+% کاهش پیدا کنن → پاسخ فرکانسی تمیزتر
+
+%%% plotting
+figure(1), clf
+
+% sinc filter
+subplot(221)
+plot(time,sincfilt,'k','linew',1)
+xlabel('Time (s)')
+title('Non-windowed sinc function')
+
+% now plot the windowed sinc filter
+subplot(222)
+plot(time,sincfiltW,'k','linew',1)
+xlabel('Time (s)')
+title('Windowed sinc function')
+
+
+subplot(223), hold on
+hz = linspace(0,srate/2,floor(pnts/2)+1);
+pw = abs(fft(sincfilt));
+plot(hz,pw(1:length(hz)),'k','linew',2)
+set(gca,'xlim',[0 f*3],'YScale','lo','ylim',[10e-7 10])
+plot([1 1]*f,get(gca,'ylim'),'r--')
+xlabel('Frequency (Hz)'), ylabel('Gain')
+
+
+
