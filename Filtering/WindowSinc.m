@@ -67,8 +67,8 @@ data = cumsum( randn(pnts,1) );
 datacat = [data; data(end:-1:1)];
 
 % apply filter (zero-phase-shift)
-dataf = filter(sincfiltW,1,datacat);
-dataf = filter(sincfiltW,1,dataf(end:-1:1));
+dataf = filter(sincfiltW,1,datacat); % Forward
+dataf = filter(sincfiltW,1,dataf(end:-1:1));% Backward
 
 % flip forwards and remove reflected points
 dataf = dataf(end:-1:pnts+1);
@@ -138,4 +138,3 @@ end
 legend(tapernames)
 
 %% done.
-
