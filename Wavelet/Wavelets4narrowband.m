@@ -15,6 +15,11 @@ subplot(211)
 plot(time,signal,'k')
 xlabel('Time (s)'), ylabel('Amplitude')
 
+% 
+% subplot(212)
+% hist(signal,100)
+
+
 % in the frequency domain
 signalX = 2*abs(fft(signal));
 subplot(212)

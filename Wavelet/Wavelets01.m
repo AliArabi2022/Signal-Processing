@@ -1,8 +1,11 @@
-
+clc;
+clear all;
+close all;
 %% general simulation parameters
 
 fs = 1024;
-npnts = fs*5; % 5 seconds
+npnts = fs*5+1; % 5 seconds if you want exactly zero center 
+% you should use odd number -> fs*5+1 otherwise fs*5 is ok
 
 % centered time vector
 timevec = (1:npnts)/fs;
@@ -14,7 +17,7 @@ hz = linspace(0,fs/2,floor(npnts/2)+1);
 %% Morlet wavelet
 
 % parameters
-freq = 4; % peak frequency
+freq = 6; % peak frequency
 csw = cos(2*pi*freq*timevec); % cosine wave
 fwhm = .5; % full-width at half-maximum in seconds
 gaussian = exp( -(4*log(2)*timevec.^2) / fwhm^2 ); % Gaussian
@@ -24,8 +27,6 @@ MorletWavelet = csw .* gaussian;
 
 % amplitude spectrum
 MorletWaveletPow = abs(fft(MorletWavelet)/npnts);
-
-
 
 figure(1), clf
 

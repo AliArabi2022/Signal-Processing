@@ -1,7 +1,7 @@
 %% general simulation parameters
 
 fs = 1024;
-npnts = fs*5; % 5 seconds
+npnts = fs*5+1; % 5 seconds
 
 % centered time vector
 timevec = (1:npnts)/fs;
