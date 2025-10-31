@@ -2,16 +2,23 @@
 
 % initialize signals, time vectors, and sampling rates
 % note: hard-coded to three signals
-[fs,timez,signals] = deal( cell(3,1) );
+clc;
+clear all;
+close all;
+
+
+
+[fs,timez,signals] = deal( cell(5,1) );
 
 
 % sampling rates in Hz
 fs{1} = 10;
 fs{2} = 40;
 fs{3} = 83;
-
+fs{4} = 95;
+fs{5} = 108;
 % create signals
-for si=1:3
+for si=1:length(fs)
     
     % create signal
     signals{si} = cumsum( sign(randn(fs{si},1)) );
@@ -25,13 +32,14 @@ end
 % plot all signals
 figure(1), clf, hold on
 
-color = 'kbr';
-shape = 'os^';
-for si=1:3
+color = 'kbrgc';
+shape = 'os^*+';
+for si=1:length(fs)
     plot(timez{si},signals{si},[ color(si) shape(si) '-' ],'linew',1,'markerfacecolor','w','markersize',6)
 end
 axlims = axis;
 xlabel('Time (s)')
+legend( 'sig1','sig2','sig3','sig4','sig5')
 
 %% upsample to fastest frequency
 
@@ -64,16 +72,16 @@ end
 % plot all signals
 figure(2), clf, hold on
 
-for si=1:3
+for si=1:length(fs)
     plot(newTime,newsignals(si,:),[ color(si) shape(si) '-' ],'linew',1,'markerfacecolor','w','markersize',6)
 end
 
 % set axis limits to match figure 1
 axis(axlims)
 
-for si=1:3
+for si=1:length(fs)
     plot(newTime,newsignals(si,:),[ color(si) shape(si) '-' ],'linew',1,'markerfacecolor','w','markersize',6)
 end
-
+legend( 'upsig1','upsig2','upsig3','upsig4','sig5')
 % set axis limits to match figure 1
 axis(axlims)

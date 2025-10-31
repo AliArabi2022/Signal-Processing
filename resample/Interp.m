@@ -1,4 +1,8 @@
 %% low-sampling-rate data to upsample
+clc;
+clear all;
+close all;
+
 
 % in Hz
 srate = 10;
@@ -27,9 +31,9 @@ N = 47;
 newTime = linspace(time(1),time(end),N);
 
 % different interpolation options
-interpOptions = {'linear';'next';'nearest';'spline'};
-interpColors  = 'brkm';
-interpShapes  = 'sd^p';
+interpOptions = {'linear';'previous';'next';'nearest';'cubic';'makima';'pchip';'spline'};
+interpColors  = 'bkmrgcmy';
+interpShapes  = 'sd^p*+xv';
 
 for methodi=1:length(interpOptions)
     
@@ -48,8 +52,8 @@ for methodi=1:length(interpOptions)
     %% plots
     
     figure(1)
-    subplot(2,2,methodi), hold on
-    plot(newTime,newdata,'ks-','markersize',10,'markerfacecolor','w')
+    subplot(2,4,methodi), hold on
+    plot(newTime,newdata,'ks-','markersize',5,'markerfacecolor','w')
     plot(time,data,'go','markersize',15,'markerfacecolor','m')
     
     % make the axis a bit nicer
