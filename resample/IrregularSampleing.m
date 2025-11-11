@@ -1,10 +1,9 @@
 %%
-%
 % Resample irregularly sampled data
-
+clc; clear all; close all;
 % simulation parameters
 srate    = 1324;    % Hz
-peakfreq =    7;    % Hz
+peakfreq =    10;    % Hz
 fwhm     =    5;    % Hz
 npnts    = srate*2; % time points
 timevec  = (0:npnts-1)/srate; % seconds
@@ -23,12 +22,12 @@ fc = rand(1,npnts) .* exp(1i*2*pi*rand(1,npnts));
 fc = fc .* fg;
 
 % go back to time domain to get signal
-signal = 2*real( ifft(fc) )*npnts;
+signal = 2*real ( ifft(fc) )*npnts;
 
 
 %%% plot 
 figure(1), clf, hold on
-plot(timevec,signal,'k','linew',3)
+plot(timevec,signal,'k','linew',5)
 xlabel('Time (s)')
 
 %% now randomly sample from this "continuous" time series
@@ -73,5 +72,5 @@ newsignal = F(timevec);
 
 
 % and plot
-plot(timevec,newsignal,'ms','markersize',5,'markerfacecolor','m')
+plot(timevec,newsignal,'ms','markersize',3,'markerfacecolor','m')
 legend({'"Analog"';'Measured';'Upsampled'})
