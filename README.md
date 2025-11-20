@@ -46,3 +46,84 @@ Signal-Processing/<br />
 ├── data/<br />
 ├── docs/<br />
 └── README.md<br />
+
+Each subdirectory contains modular examples illustrating the theory and implementation of each technique.
+
+---
+
+## Getting Started
+
+### Requirements
+
+**MATLAB:**
+- Any recent version (R2020+ recommended)
+
+**Python:**
+Install via:
+```bash
+pip install numpy scipy matplotlib pywt jupyter
+```
+Installation
+```bash
+git clone https://github.com/AliArabi2022/Signal-Processing.git
+cd Signal-Processing
+```
+
+MATLAB: Open .m files directly.
+
+Python: Run notebooks via:
+```bash
+jupyter notebook
+```
+
+## Usage
+
+Example workflows:
+
+Frequency Domain Analysis
+Apply window functions → compute FFT → evaluate spectrum.
+
+Wavelet Denoising
+Perform DWT → thresholding → reconstruct clean signal.
+
+Resampling
+Downsample/upsample → compare aliasing → apply anti-aliasing filters.
+
+Filtering
+Design FIR/IIR filters → apply convolution → analyze stability.
+
+Each folder contains comments, equations, and plots to make the concepts accessible.
+--- 
+
+## Roadmap
+
+Planned additions:
+
+Filter design toolbox (MATLAB + Python)
+
+Adaptive filtering (LMS, NLMS, RLS)
+
+Real-time signal streaming examples
+
+Kalman filtering and state-space signal processing
+
+Machine learning + signal processing examples
+
+Expanded documentation with derivations and problem sets
+
+## Contributing
+
+See CONTRIBUTING.md for guidelines on pull requests, style, and code organization.
+
+## License
+
+This project is released under the MIT License. See the LICENSE file for details.
+
+## Maintainer
+
+Ali Arabi
+Researcher in Communication Systems & Signal Processing
+GitHub: AliArabi2022
+
+---
+
