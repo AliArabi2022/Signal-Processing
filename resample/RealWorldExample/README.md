@@ -67,7 +67,7 @@ Output: hello_warped_STUDIO.wav
 ## File Structure
 
 DTW-Speech-Alignment-MATLAB/<br>
-├── main_DTW_Speech_Alignment.m     Main script (run this!)
+├── main_DTW_Speech_Alignment.m     Main script (run this!)<br>
 ├── warpSpeechDTW.m                 Studio-quality warping<br> function<br>
 ├── hello_warped_STUDIO.wav  Example output<br>
 ├── README.md<br>
